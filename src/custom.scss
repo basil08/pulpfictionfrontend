@@ -1,0 +1,17 @@
+@import '../node_modules/bootstrap/scss/functions';
+@import '../node_modules/bootstrap/scss/variables';
+@import '../node_modules/bootstrap/scss/mixins';
+
+// Custom variables goes here
+
+// $body-bg: #343645;
+// $font-family-base: 'Poppins';
+
+// $theme-colors: (
+// 	'primary': #ca256a,
+// 	'secondary': #343645,
+// 	'warning': #ff026b,
+// 	'info': #ccc,
+// );
+
+@import '~bootstrap/scss/bootstrap.scss';
