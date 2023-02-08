@@ -1,39 +1,50 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import userLoginGuard from "../utils/user-login-guard";
-import { useNavigate } from 'react-router-dom';
-import { getUserProfile } from "../utils/api";
-import Spinner from 'react-bootstrap/Spinner';
+import { useNavigate } from "react-router-dom";
+import { getUserProfile, logoutUser } from "../utils/api";
+import { checkJWT } from "../utils/api";
+import Navbar from "../components/navbar";
+import RightSideBar from "../components/rightSidebar";
 
 export default function Library() {
-  const [profile, setProfile] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(userLoginGuard(useNavigate()), []);
 
+  const [profile, setProfile] = useState(null);
+
+  const getUser = async () => {
+    if (checkJWT()) {
+      const payload = await getUserProfile();
+      if (!payload.error) {
+        setProfile(payload.data);
+      }
+    }
+  };
+
+  const onLogout = () => {
+    logoutUser();
+    navigate('/login');
+  }
+
   useEffect(() => {
-    userProfile();
+    getUser();
   }, []);
 
-  const userProfile = async () => {
-    const data = await getUserProfile();
-    if (!data.error) {
-      console.log(data);
-      setProfile(data.data);
-    } else {
-      console.log(data.message);
-    }
-  }
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col">
-          {profile ?
-          <div>
-            <p>Username: {profile.username}</p>
-            <p>Email: {profile.email}</p>
+    <>
+    {profile &&
+      <Navbar title={'Library'} profile={profile} handleLogout={onLogout} />
+    }
+        <div class="row">
+          <div class="col-3">Placeholder</div>
+          <div class="col"></div>
+          <div class="col-3">
+            <div className="border-start">
+            <RightSideBar />
+            </div>
           </div>
-          : <Spinner />}
         </div>
-      </div>
-    </div>
-  )
+    </>
+  );
 }

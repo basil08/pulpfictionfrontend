@@ -3,15 +3,23 @@
 @import '../node_modules/bootstrap/scss/mixins';
 
 // Custom variables goes here
+// @import 'https://fonts.googleapis.com/css2?family=Itim&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Itim&family=Open+Sans:wght@300;400;500;700;800&display=swap';
 
 // $body-bg: #343645;
-// $font-family-base: 'Poppins';
+$font-family-base: 'Open Sans';
 
-// $theme-colors: (
-// 	'primary': #ca256a,
-// 	'secondary': #343645,
-// 	'warning': #ff026b,
-// 	'info': #ccc,
-// );
+$headings-font-family: 'Itim';
+
+
+$theme-colors: (
+	'primary': #ffe647,
+	'secondary': #343645,
+	'warning': #ff026b,
+	'info': #ccc,
+);
+
+$border-color: black;
+$card-border-color: black;
 
 @import '~bootstrap/scss/bootstrap.scss';

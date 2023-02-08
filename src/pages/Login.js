@@ -37,7 +37,7 @@ export default function Login() {
             <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
           </div>
           <div className="row">
-            <button disabled={isSubmitting} className="border-0 mt-2 p-2 bg-primary text-white" onClick={(e) => { e.preventDefault(); handleLogin()}}>Login</button>
+            <button disabled={isSubmitting} className="mt-2 p-2 bg-primary text-black border" onClick={(e) => { e.preventDefault(); handleLogin()}}>Login</button>
           </div>
           </form>
         </div>
