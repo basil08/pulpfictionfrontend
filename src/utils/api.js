@@ -90,5 +90,19 @@ async function getMovie(id) {
   return { error: true, message: await res.json() };
 }
 
-export { loginUser, getMovie, logoutUser, checkJWT, createUser, getUserProfile };
+async function getMovies(skip, limit) {
+  const res = await fetch(`${PULP_FICTION_API_URL}/api/getMovies?skip=${skip}&limit=${limit}`, {
+    method: 'GET',
+    headers: headers()
+  });
+
+  if (res.status === 200) {
+    const data = await res.json();
+    return { error: false, message: res.statusText, data: data};
+  }
+
+  return { error: true, message: await res.json() };
+}
+
+export { loginUser, getMovie, logoutUser, checkJWT, createUser, getUserProfile, getMovies };
 

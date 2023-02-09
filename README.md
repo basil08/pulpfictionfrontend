@@ -13,3 +13,5 @@
 
 # BUGS
 
+1. Toggling tags accordion to active in libraryCard makes the whole text col block somehow?
+2. 
